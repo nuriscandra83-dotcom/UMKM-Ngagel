@@ -1,0 +1,594 @@
+/* =============================================
+   UMKM NGAGEL — style.css
+   Tema: Elegant Local Directory
+   ============================================= */
+
+:root {
+  --navy:       #0a2a5e;
+  --navy-light: #153a7a;
+  --gold:       #c9a84c;
+  --gold-light: #e8c96a;
+  --cream:      #fdf8ef;
+  --white:      #ffffff;
+  --text-dark:  #1a1a2e;
+  --text-mid:   #4a4a6a;
+  --text-soft:  #8888aa;
+  --border:     #e8e4f0;
+  --shadow:     0 4px 24px rgba(10,42,94,0.10);
+  --shadow-lg:  0 8px 40px rgba(10,42,94,0.16);
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #e8e4f0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 430px;
+  background: var(--cream);
+  min-height: 100vh;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ── Header ── */
+.header {
+  background: linear-gradient(145deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 36px 20px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative orbs */
+.header::before {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.12);
+  top: -60px; right: -60px;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  bottom: -30px; left: 20px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-sub {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+  font-weight: 400;
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--white);
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0;
+  font-weight: 900;
+}
+
+.header-title span {
+  color: var(--gold-light);
+}
+
+.header-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.75rem;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+}
+
+.badge-dot {
+  width: 7px; height: 7px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+/* ── Search ── */
+.search-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-soft);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 12px 44px 12px 40px;
+  border-radius: 30px;
+  border: 2px solid transparent;
+  background: rgba(255,255,255,0.95);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: var(--transition);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.search-bar:focus {
+  border-color: var(--gold);
+  box-shadow: 0 2px 16px rgba(201,168,76,0.25);
+}
+
+.clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+/* ── Kategori ── */
+.categories {
+  display: flex;
+  gap: 8px;
+  padding: 16px 16px 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.categories::-webkit-scrollbar { display: none; }
+
+.cat-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.cat-btn:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+  background: rgba(10,42,94,0.04);
+}
+
+.cat-btn.active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+  box-shadow: 0 3px 12px rgba(10,42,94,0.25);
+}
+
+.cat-icon { font-size: 0.95rem; }
+
+/* ── Peta ── */
+.map-wrap {
+  position: relative;
+}
+
+#map {
+  height: 220px;
+  width: 100%;
+  z-index: 1;
+}
+
+.map-label {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10,42,94,0.82);
+  color: white;
+  font-size: 0.72rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 2;
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(4px);
+}
+
+/* ── Katalog ── */
+.catalog-section {
+  padding: 20px 16px 16px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 700;
+}
+
+.result-count {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  font-weight: 400;
+}
+
+/* ── Kartu UMKM ── */
+.umkm-card {
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(10,42,94,0.04);
+  text-decoration: none;
+}
+
+.umkm-card:hover {
+  border-color: var(--navy);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.umkm-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #eef1f8, #dce3f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.umkm-info { flex: 1; min-width: 0; }
+
+.umkm-info h4 {
+  margin: 0 0 3px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.umkm-info p {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.umkm-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.tag {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.tag-cat {
+  background: rgba(10,42,94,0.08);
+  color: var(--navy);
+}
+
+.tag-open {
+  background: rgba(74,222,128,0.12);
+  color: #16a34a;
+}
+
+.umkm-arrow {
+  color: var(--text-soft);
+  font-size: 1rem;
+  margin-left: 8px;
+  transition: var(--transition);
+}
+
+.umkm-card:hover .umkm-arrow {
+  color: var(--navy);
+  transform: translateX(3px);
+}
+
+/* ── Empty State ── */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-soft);
+}
+.empty-state .empty-icon { font-size: 2.5rem; margin-bottom: 10px; }
+.empty-state p { font-size: 0.88rem; margin: 0; }
+
+/* ── Footer ── */
+.footer {
+  padding: 20px 16px 32px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  margin: 0 0 6px;
+}
+
+.gh-link {
+  font-size: 0.78rem;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition);
+}
+.gh-link:hover { border-bottom-color: var(--navy); }
+
+/* ── Detail Page ── */
+.detail-page {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  min-height: 100%;
+  background: var(--cream);
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+  animation: slideIn 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0.6; }
+  to   { transform: translateX(0);    opacity: 1;   }
+}
+
+.detail-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--navy);
+  cursor: pointer;
+  padding: 6px 10px 6px 6px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.back-btn:hover { background: rgba(10,42,94,0.06); }
+
+.detail-cat-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201,168,76,0.12);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.detail-hero {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(145deg, var(--navy), #1e4f9f);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+/* Orbs in hero */
+.detail-hero::before {
+  content: '';
+  position: absolute;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.15);
+  top: -50px; right: -40px;
+}
+
+.detail-hero-icon {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 4rem;
+  z-index: 1;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+
+.detail-hero-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 16px 18px;
+  background: linear-gradient(to top, rgba(10,42,94,0.95) 0%, transparent 100%);
+  width: 100%;
+}
+
+.detail-hero-overlay h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--white);
+  margin: 0 0 4px;
+  font-size: 1.3rem;
+}
+
+.detail-hero-overlay p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.detail-body { padding: 16px; }
+
+.detail-info-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.info-chip {
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text-mid);
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(10,42,94,0.06);
+}
+
+.products-section {}
+
+.products-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+}
+
+/* ── Produk Card ── */
+.product-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 10px;
+  transition: var(--transition);
+}
+
+.product-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 2px 10px rgba(201,168,76,0.12);
+}
+
+.product-img {
+  width: 62px; height: 62px;
+  background: linear-gradient(135deg, #fff8e7, #f5edd0);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.product-info { flex: 1; min-width: 0; }
+
+.product-info h5 {
+  margin: 0 0 3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.product-info p {
+  margin: 0 0 6px;
+  font-size: 0.76rem;
+  color: var(--text-soft);
+}
+
+.product-price {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: rgba(10,42,94,0.06);
+  padding: 2px 8px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* ── Responsive tweak ── */
+@media (min-width: 431px) {
+  .app-shell {
+    margin: 20px auto;
+    min-height: calc(100vh - 40px);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMKM Ngagel — Direktori Usaha Lokal</title>
+    <meta name="description" content="Direktori UMKM Ngagel — Temukan usaha kuliner, jasa, dan belanja terbaik di sekitarmu.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ============ MAIN SCREEN ============ -->
+  <div id="main-screen">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div>
+          <p class="header-sub">Selamat datang di</p>
+          <h1 class="header-title">UMKM<br><span>Ngagel</span></h1>
+        </div>
+        <div class="header-badge">
+          <span class="badge-dot"></span>
+          <span>3 Aktif</span>
+        </div>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="searchInput" class="search-bar" placeholder="Cari usaha, produk, layanan...">
+        <button id="clearSearch" class="clear-btn" style="display:none;">✕</button>
+      </div>
+    </header>
+
+    <!-- Kategori -->
+    <nav class="categories">
+      <button class="cat-btn active" data-category="Semua" onclick="filterCategory('Semua', this)">
+        <span class="cat-icon">✦</span>
+        <span>Semua</span>
+      </button>
+      <button class="cat-btn" data-category="Kuliner" onclick="filterCategory('Kuliner', this)">
+        <span class="cat-icon">🍽️</span>
+        <span>Kuliner</span>
+      </button>
+      <button class="cat-btn" data-category="Jasa" onclick="filterCategory('Jasa', this)">
+        <span class="cat-icon">🛠️</span>
+        <span>Jasa</span>
+      </button>
+      <button class="cat-btn" data-category="Belanja" onclick="filterCategory('Belanja', this)">
+        <span class="cat-icon">🛍️</span>
+        <span>Belanja</span>
+      </button>
+    </nav>
+
+    <!-- Peta -->
+    <div class="map-wrap">
+      <div id="map"></div>
+      <div class="map-label">Peta Lokasi UMKM</div>
+    </div>
+
+    <!-- Katalog -->
+    <section class="catalog-section">
+      <div class="section-header">
+        <h2 class="section-title">Rekomendasi Terdekat</h2>
+        <span id="result-count" class="result-count">3 usaha</span>
+      </div>
+      <div id="catalog-list"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>UMKM Ngagel &copy; 2025 &mdash; Open Source</p>
+      <a href="https://github.com/" target="_blank" class="gh-link">⭐ Kontribusi di GitHub</a>
+    </footer>
+
+  </div>
+
+  <!-- ============ DETAIL PAGE ============ -->
+  <div id="detail-page" class="detail-page">
+    <div class="detail-header">
+      <button class="back-btn" onclick="closeDetail()">
+        <span>←</span> Kembali
+      </button>
+      <span id="detail-category-badge" class="detail-cat-badge">Kuliner</span>
+    </div>
+
+    <div class="detail-hero" id="detail-hero">
+      <div class="detail-hero-icon" id="detail-cover-icon">🏪</div>
+      <div class="detail-hero-overlay">
+        <h2 id="detail-title">Nama UMKM</h2>
+        <p id="detail-desc">Deskripsi</p>
+      </div>
+    </div>
+
+    <div class="detail-body">
+      <div class="detail-info-row">
+        <div class="info-chip" id="detail-status-chip">🟢 Buka</div>
+        <div class="info-chip" id="detail-distance-chip">📍 0.2 km</div>
+      </div>
+
+      <div class="products-section">
+        <h3 class="products-title">Produk &amp; Layanan</h3>
+        <div id="product-list"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
